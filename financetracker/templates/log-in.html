@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>FinView | Log In</title>
 </head>
-<body>
+<body class="log-in">
     <nav id="navigation">
         <div class="container-fluid">
             <div class="row">
@@ -28,7 +28,7 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <form class="form-box" method="GET" action="#">
+                <form action="{{ url_for('dashboard') }}" method="GET" class="form-box">
                     <div class="row">
                         <h1 class="page-heading"><b>Log Into Your Account</b></h1>
                     </div>

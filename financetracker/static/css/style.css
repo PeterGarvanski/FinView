@@ -1,12 +1,19 @@
 /* General CSS */
 
-body {
+body.log-in {
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
-    background-color: #473dc6;
+    background-color: #474471;
     background-image: url("../images/log-in-background.png");
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
+}
+.right-text {
+    text-align: right;
+}
+
+.left-text {
+    text-align: left;
 }
 
 .centre {
@@ -34,13 +41,14 @@ ul.nav-menu {
     font-weight: 500;
     border-right: 3px solid #edf0f2;
     padding-right: 20px;
+    display: inline-block;
 }
 
 #register-button {
     border: 2px solid #edf0f2;
     border-radius: 30px;
     color: #edf0f2;
-    background-color: #150e60;
+    background-color: #474471;
     font-size: 26px;
     font-weight: 500;
     padding: 15px 30px;
@@ -70,7 +78,7 @@ ul.nav-menu {
     flex: 1; /* Fill remaining space */
     height: 75px;
     width: 400px;
-    background-color: #150e60;
+    background-color: #474471;
     border: 2px solid #edf0f2;
     border-radius: 40px;
     color: #edf0f2;
@@ -96,7 +104,7 @@ input.input-style::placeholder {
 }
 
 #submit-button {
-    background-color: #150e60;
+    background-color: #474471;
     border: 2px solid #edf0f2;
     border-radius: 40px;
     height: 60px;
@@ -105,4 +113,38 @@ input.input-style::placeholder {
     font-size: 24px;
     font-weight: 500;
     color: #edf0f2;
+}
+
+/* CSS For Dashboard Page */
+
+body.base {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    background-color: #474471;
+    background-image: url("../images/arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center top 10%;
+}
+
+.underline {
+    border-bottom: 3px solid #edf0f2;
+}
+
+/* CSS For Navigation */
+
+.main-nav {
+    margin-top: 20px;
+    list-style: none;
+    gap: 5%;
+}
+
+.nav-link {
+    margin-top: 10px;
+    color: #edf0f2;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.nav-element {
+    display: flex;
 }
