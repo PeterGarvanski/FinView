@@ -1,0 +1,105 @@
+/* General CSS */
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    background-color: grey;
+}
+
+.centre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CSS For Sign-In Page */
+
+/* CSS For Navigation */
+
+.nav-menu {
+    gap: 60%;
+    margin-top: 20px;
+}
+
+ul.nav-menu {
+    list-style: none;
+}
+
+.website-name {
+    color: #edf0f2;
+    font-size: 60px;
+    font-weight: 500;
+    border-right: 3px solid #edf0f2;
+    padding-right: 20px;
+}
+
+#register-button {
+    border: 2px solid #150e60;
+    border-radius: 30px;
+    color: #edf0f2;
+    background-color: #150e60;
+    font-size: 26px;
+    font-weight: 500;
+    padding: 15px 30px;
+    text-decoration: none;
+}
+
+/* CSS For Form */
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.label-input label {
+    width: 220px;
+}
+
+.input-style {
+    flex: 1; /* Fill remaining space */
+    height: 75px;
+    width: 400px;
+    background-color: #150e60;
+    border: 2px solid #150e60;
+    border-radius: 40px;
+    color: #edf0f2;
+    text-indent: 10px;
+    font-size: 24px;
+    margin-right: 220px;
+}
+
+input.input-style::placeholder {
+    color: #edf0f2;
+}
+
+.page-heading {
+    margin-top: 200px;
+    font-size: 60px;
+    color: #150e60;
+    font-weight: 500;
+}
+
+.my-labels {
+    font-size: 36px;
+    color: #edf0f2;
+}
+
+#submit-button {
+    background-color: #150e60;
+    border: 2px solid #edf0f2;
+    border-radius: 40px;
+    height: 60px;
+    width: 200px;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #edf0f2;
+}

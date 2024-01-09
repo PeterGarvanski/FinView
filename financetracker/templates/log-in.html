@@ -3,11 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <title>Finance Tracker | Log In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>FinView | Log In</title>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <script type="text/javascript" src="../static/js/script.js"></script>
+    <nav id="navigation">
+        <div class="container-fluid">
+            <div class="row">
+                <ul class="nav-menu centre">
+                    <li class="nav-links">
+                        <h2 class="website-name">FinView</h2>
+                    </li>
+                    <li class="nav-links">
+                        <a href="#" id="register-button">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <form class="form-box" method="GET" action="#">
+                    <div class="row">
+                        <h1 class="page-heading"><b>Log In</b></h1>
+                    </div>
+                    <div class="row label-input">
+                        <label class="my-labels" for="username"><b>Username:</b></label>
+                        <input type="text" id="username" placeholder="Enter Username" name="username" class="input-style" required>
+                    </div>
+                    <div class="row label-input">
+                        <label class="my-labels" for="password"><b>Password:</b></label>
+                        <input type="password" id="password" placeholder="Enter Password" name="password" class="input-style" required>
+                    </div>
+                    <div class="row">
+                        <input type="submit" id="submit-button" value="Submit">
+                    </div>
+                </form>                
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
