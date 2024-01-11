@@ -148,3 +148,32 @@ body.base {
 .nav-element {
     display: flex;
 }
+
+.page-title {
+    margin-top: 50px;
+    color: #edf0f2;
+    font-size: 40px;
+    text-align: center;
+}
+
+table {
+    margin-top: 40px;
+}
+.table-body {
+    text-align: center;
+    margin-top: 40px;
+}
+.data {
+    color: #edf0f2;
+    background-color: #47447100;
+    font-size: 30px;
+}
+
+tr.table-row {
+    display: flex;
+    border: 3px solid #edf0f2;
+    border-radius: 30px;
+    gap: 8vw;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}

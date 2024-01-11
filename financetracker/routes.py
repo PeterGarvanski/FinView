@@ -12,6 +12,17 @@ def home():
 def register():
     return render_template("register.html")
 
+
 @app.route("/dashboard")
 def dashboard():
-    return render_template("base.html")
+    return render_template("dashboard.html")
+
+
+@app.route("/income&expenses")
+def income_expenses():
+    return render_template("income-expenses.html")
+
+
+@app.route("/assets")
+def assets():
+    return render_template("assets.html")
