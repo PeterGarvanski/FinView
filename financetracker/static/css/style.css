@@ -16,6 +16,10 @@ body.log-in {
     text-align: left;
 }
 
+.centre-text {
+    text-align: center;
+}
+
 .centre {
     display: flex;
     justify-content: center;
@@ -149,6 +153,10 @@ body.base {
     display: flex;
 }
 
+/* CSS For Dashboard Page */
+
+/* CSS For table */
+
 .page-title {
     margin-top: 50px;
     color: #edf0f2;
@@ -156,24 +164,52 @@ body.base {
     text-align: center;
 }
 
-table {
-    margin-top: 40px;
-}
-.table-body {
-    text-align: center;
-    margin-top: 40px;
-}
-.data {
-    color: #edf0f2;
-    background-color: #47447100;
-    font-size: 30px;
+.table {
+    display: flex;
+    flex-direction: column;
+    margin: 40px auto 0 auto;
+    max-width: 800px;
 }
 
-tr.table-row {
+.trow {
     display: flex;
     border: 3px solid #edf0f2;
     border-radius: 30px;
-    gap: 8vw;
-    padding: 10px 20px;
-    margin-bottom: 20px;
+    max-width: 800px;
+    margin-top: 20px;
+    background-color: #2d2354;
+}
+
+.header {
+    font-weight: bold;
+    padding: 10px;
+    color: #edf0f2;
+}
+
+.cell {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: #edf0f2;
+}
+
+.heads {
+    border-right: 3px solid #edf0f2;
+    font-size: 26px;
+}
+
+.heads.rem {
+    border-right: none;
+}
+
+div.trow.header {
+    border: none;
+    margin-top: 0;
+    background-color: #47447100;
+}
+
+.cell i {
+    background-color: transparent;
+    color: #edf0f2;
 }
