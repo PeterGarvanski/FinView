@@ -16,10 +16,10 @@
             <div class="row">
                 <ul class="nav-menu centre">
                     <li class="nav-links">
-                        <h2 class="website-name">FinView</h2>
+                        <h2 class="website-name txt-shadow">FinView</h2>
                     </li>
                     <li class="nav-links">
-                        <a href="{{ url_for('register') }}" id="register-button">Register</a>
+                        <a href="{{ url_for('register') }}" id="register-button" class="bx-shadow">Register</a>
                     </li>
                 </ul>
             </div>
@@ -30,18 +30,18 @@
             <div class="row">
                 <form action="{{ url_for('dashboard') }}" method="GET" class="form-box">
                     <div class="row">
-                        <h1 class="page-heading"><b>Log Into Your Account</b></h1>
+                        <h1 class="page-heading txt-shadow"><b>Log Into Your Account</b></h1>
                     </div>
                     <div class="row label-input">
-                        <label class="my-labels" for="username"><b>Username:</b></label>
-                        <input type="text" id="username" placeholder="Enter Username" name="username" class="input-style" required>
+                        <label class="my-labels txt-shadow" for="username"><b>Username:</b></label>
+                        <input type="text" id="username" placeholder="Enter Username" name="username" class="input-style bx-shadow" required>
                     </div>
                     <div class="row label-input">
-                        <label class="my-labels" for="password"><b>Password:</b></label>
-                        <input type="password" id="password" placeholder="Enter Password" name="password" class="input-style" required>
+                        <label class="my-labels txt-shadow" for="password"><b>Password:</b></label>
+                        <input type="password" id="password" placeholder="Enter Password" name="password" class="input-style bx-shadow" required>
                     </div>
                     <div class="row">
-                        <input type="submit" id="submit-button" value="Submit">
+                        <input type="submit" id="submit-button" value="Submit" class="bx-shadow">
                     </div>
                 </form>                
             </div>

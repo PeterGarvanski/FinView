@@ -26,6 +26,14 @@ body.log-in {
     align-items: center;
 }
 
+.bx-shadow {
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.txt-shadow {
+    text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+}
+
 /* CSS For Sign-In Page */
 
 /* CSS For Navigation */
@@ -127,7 +135,7 @@ body.base {
     background-color: #474471;
     background-image: url("../images/arrow.svg");
     background-repeat: no-repeat;
-    background-position: center top 10%;
+    background-position: center top 25%;
 }
 
 .underline {
@@ -212,4 +220,20 @@ div.trow.header {
 .cell i {
     background-color: transparent;
     color: #edf0f2;
+}
+
+/* CSS For the C Graph */
+
+h4.special-saving {
+    margin-top: 160px;
+}
+
+.savings-text {
+    color: #edf0f2;
+    font-size: 26px;
+    margin: 20px 0;
+}
+
+.chart-box {
+    width: 400px;
 }
