@@ -141,8 +141,11 @@ body.base {
     background-color: #474471;
     background-image: url("../images/arrow.svg");
     background-repeat: no-repeat;
-    background-position: center top 25%;
+    background-position: 220px -130px;
 }
+
+
+
 
 .underline {
     border-bottom: 3px solid #edf0f2;
@@ -292,4 +295,22 @@ h4.special-saving {
     justify-content: center;
     align-items: center;
     gap: 60px;
+}
+
+.chart-box.asset-chart {
+    width: 500px;
+    position: absolute;
+    top: 200px;
+}
+
+.salary-circle.asset-sum {
+    position: absolute;
+    margin: 0;
+    top: 350px;
+    width: 232px;
+    height: 232px;
+}
+
+.asset-sum > .salary {
+    font-size: 36px;
 }
