@@ -15,14 +15,14 @@ def register():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html")
+    return render_template("dashboard.html", active_page="dashboard")
 
 
 @app.route("/income&expenses")
 def income_expenses():
-    return render_template("income-expenses.html")
+    return render_template("income-expenses.html", active_page="income_expenses")
 
 
 @app.route("/assets")
 def assets():
-    return render_template("assets.html")
+    return render_template("assets.html", active_page="assets")

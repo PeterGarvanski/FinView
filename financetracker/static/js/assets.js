@@ -9,7 +9,7 @@ var assetDoughnutChart = new Chart(assetCtx, {
             data: [45, 27, 61, 36],
             borderColor: "#edf0f2",
             backgroundColor: ["#2d2354", "#edf0f2a8"],
-            borderWidth: 4,
+            borderWidth: 5,
         }]
     },
 

@@ -21,13 +21,13 @@
                 <div class="col-md-8">
                     <ul class="main-nav left-text nav-element">
                         <li>
-                            <a href="{{ url_for('dashboard') }}" class="nav-link underline txt-shadow">Dashboard</a>
+                            <a href="{{ url_for('dashboard') }}" class="{% if active_page == 'dashboard' %}underline{% endif %} nav-link txt-shadow" id="dashboard">Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{ url_for('income_expenses') }}" class="nav-link txt-shadow">Income & Expenses</a>
+                            <a href="{{ url_for('income_expenses') }}" class="{% if active_page == 'income_expenses' %}underline{% endif %} nav-link txt-shadow" id="income_expenses">Income & Expenses</a>
                         </li>
                         <li>
-                            <a href="{{ url_for('assets') }}" class="nav-link txt-shadow">Assets</a>
+                            <a href="{{ url_for('assets') }}" class="{% if active_page == 'assets' %}underline{% endif %} nav-link txt-shadow" id="assets">Assets</a>
                         </li>
                     </ul>
                 </div>
@@ -39,5 +39,6 @@
         {% endblock %}
     </section>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

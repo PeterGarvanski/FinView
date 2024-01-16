@@ -2,13 +2,20 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <div class="row centre">
+                <div class="display-screen" id="asset-screen"></div>
+            </div>
+            <div class="row centre">
+                <a href="#" class="bx-shadow bttn txt-shadow" id="add-asset">Add Transaction</a>
+            </div>
+        </div>
         <div class="col-md-6 centre">
             <div class="chart-box asset-chart">
                 <canvas id="asset-chart"></canvas>
             </div>
             <div class="salary-circle asset-sum centre">
-                <h2 class="salary">£250,000</h2>
+                <h2 class="salary txt-shadow">£250,000</h2>
             </div>
         </div>
     </div>
