@@ -320,6 +320,35 @@ h4.special-saving {
 }
 
 #add-asset {
-    max-width: 300px;
+    max-width: 250px;
     text-align: center;
+}
+
+.buttons-gap {
+    gap: 40px;
+}
+
+.asset-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.asset-header {
+    color: #edf0f2;
+    margin-bottom: 40px;
+}
+
+.input {
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 3px solid #edf0f2;
+    background-color: transparent;
+    font-size: 26px;
+    color: #edf0f2;
+}
+
+input.input::placeholder {
+    color: #edf0f2;
 }

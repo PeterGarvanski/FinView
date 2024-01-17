@@ -1,0 +1,9 @@
+{% extends "assets.html" %}
+{% block asset_screen %}
+<form action="{{ url_for('assets') }}" method="POST" class="asset-form">
+    <h1 class="txt-shadow asset-header"><b>Add an Asset</b></h1>
+    <input type="text" id="asset-name" placeholder="Asset Name" name="asset-name" class="input txt-shadow" required>
+    <input type="text" id="asset-value" placeholder="Asset Value" name="asset-value" class="input txt-shadow" required>
+    <input type="submit" id="submit-button" value="Submit" class="bx-shadow button-clr">
+</form>
+{% endblock%}

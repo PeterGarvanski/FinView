@@ -1,0 +1,8 @@
+{% extends "assets.html" %}
+{% block asset_screen %}
+<form action="{{ url_for('assets') }}" method="GET" class="asset-form">
+    <h1 class="txt-shadow asset-header"><b>Delete an Asset</b></h1>
+    <input type="text" id="asset-name" placeholder="Asset Name" name="asset-name" class="input txt-shadow" required>
+    <input type="submit" id="submit-button" value="Sumbit" class="bx-shadow button-clr">
+</form>
+{% endblock%}

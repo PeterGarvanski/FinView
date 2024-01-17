@@ -4,10 +4,14 @@
     <div class="row">
         <div class="col-md-6">
             <div class="row centre">
-                <div class="display-screen" id="asset-screen"></div>
+                <div class="display-screen centre" id="asset-screen">
+                    {% block asset_screen %}
+                    {% endblock %}
+                </div>
             </div>
-            <div class="row centre">
-                <a href="#" class="bx-shadow bttn txt-shadow" id="add-asset">Add Transaction</a>
+            <div class="row centre buttons-gap">
+                <a href="{{ url_for('addAssets') }}" class="bx-shadow bttn txt-shadow" id="add-asset">Add Asset</a>
+                <a href="{{ url_for('deleteAssets') }}" class="bx-shadow bttn txt-shadow" id="add-asset">Delete Asset</a>
             </div>
         </div>
         <div class="col-md-6 centre">

@@ -26,3 +26,12 @@ def income_expenses():
 @app.route("/assets")
 def assets():
     return render_template("assets.html", active_page="assets")
+
+@app.route("/add-assets", methods=["GET", "POST"])
+def addAssets():
+    return render_template("add-asset.html", active_page="assets")
+
+
+@app.route("/delete-assets")
+def deleteAssets():
+    return render_template("delete-asset.html", active_page="assets")
