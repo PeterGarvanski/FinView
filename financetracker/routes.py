@@ -23,9 +23,25 @@ def income_expenses():
     return render_template("income-expenses.html", active_page="income_expenses")
 
 
+@app.route("/add-transaction", methods=["GET", "POST"])
+def addTransaction():
+    return render_template("add-transaction.html", active_page="income_expenses")
+
+
+@app.route("/edit-salary", methods=["GET", "POST"])
+def editSalary():
+    return render_template("edit-salary.html", active_page="income_expenses")
+
+
+@app.route("/delete-transaction")
+def deleteTransaction():
+    return render_template("delete-transaction.html", active_page="income_expenses")
+
+
 @app.route("/assets")
 def assets():
     return render_template("assets.html", active_page="assets")
+
 
 @app.route("/add-assets", methods=["GET", "POST"])
 def addAssets():

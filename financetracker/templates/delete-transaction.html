@@ -1,0 +1,8 @@
+{% extends "income-expenses.html" %}
+{% block transaction_screen %}
+<form action="{{ url_for('income_expenses') }}" method="GET" class="asset-form">
+    <h1 class="txt-shadow asset-header extra"><b>Delete a Transaction</b></h1>
+    <input type="text" id="category" placeholder="Transaction Description" name="category" class="input txt-shadow" required>
+    <input type="submit" id="submit-button" value="Submit" class="bx-shadow button-clr">
+</form>
+{% endblock %}

@@ -352,3 +352,16 @@ h4.special-saving {
 input.input::placeholder {
     color: #edf0f2;
 }
+
+.asset-header.transaction {
+    margin-top: 20px;
+}
+
+.asset-header.extra {
+    margin-top: 80px;
+}
+
+.input.extra-space {
+    margin-top: 20px;
+    font-size: 30px;
+}

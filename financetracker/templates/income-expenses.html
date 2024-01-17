@@ -8,15 +8,19 @@
             </div>
         </div>
         <div class="col-md-6 centre">
-            <div class="display-screen" id="transaction-screen"></div>
+            <div class="display-screen" id="transaction-screen centre">
+                {% block transaction_screen %}
+                {% endblock %}
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6 centre">
-            <a href="#" class="bx-shadow bttn txt-shadow">Edit Salary</a>
+            <a href="{{ url_for('editSalary') }}" class="bx-shadow bttn txt-shadow">Edit Salary</a>
         </div>
         <div class="col-md-6 gap-centre">
-            <a href="#" class="bx-shadow bttn txt-shadow" id="add-transaction">Add Transaction</a>
+            <a href="{{ url_for('addTransaction') }}" class="bx-shadow bttn txt-shadow" id="add-transaction">Add Transaction</a>
+            <a href="{{ url_for('deleteTransaction') }}" class="bx-shadow bttn txt-shadow" id="delete-transaction">Delete Transaction</a>
         </div>
     </div>
 </div>
