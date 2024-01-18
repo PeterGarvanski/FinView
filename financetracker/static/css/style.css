@@ -133,6 +133,11 @@ input.input-style::placeholder {
     color: #edf0f2;
 }
 
+.error-message {
+    color: #edf0f2;
+    margin: 0;
+}
+
 /* CSS For Dashboard Page */
 
 body.base {

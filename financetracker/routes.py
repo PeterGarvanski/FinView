@@ -13,7 +13,7 @@ def home():
 def logIn():
     try:
         if request.method == "POST":
-            username = request.form.get("username")
+            username = request.form.get("username").lower()
             password = request.form.get("password")
             user = User.query.filter_by(username=username).first()
 
@@ -23,12 +23,15 @@ def logIn():
                 return redirect(url_for("dashboard"))
             else:
                 # Redirects to Log-in
-                return render_template("log-in.html")
+                print("Incorrect Password")
+                message = "Incorrect Password"
+                return render_template("log-in.html", log_in_message=message)
     
     # If User has the Wrong Username
     except AttributeError:
         print("No Account with that username")
-        return render_template("log-in.html")
+        message = "No Account Found With That Username"
+        return render_template("log-in.html", log_in_message=message)
 
     return render_template("log-in.html")
 
@@ -39,7 +42,7 @@ def register():
     try:
         if request.method == "POST":
             # Adds data to the database
-            username = request.form.get("username")
+            username = request.form.get("username").lower()
             password = request.form.get("password")
             net_worth_goal = request.form.get("net_worth_goal")
             savings_goal = request.form.get("savings_goal")
@@ -55,7 +58,8 @@ def register():
     # If Credentials already taken
     except:
         print("Credentials Already Taken")
-        return render_template("register.html")
+        message = "Credentials Already Taken"
+        return render_template("register.html", register_message=message)
 
     return render_template("register.html")
 
