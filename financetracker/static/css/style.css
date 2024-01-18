@@ -121,7 +121,7 @@ input.input-style::placeholder {
     color: #edf0f2;
 }
 
-#submit-button {
+.submit-button {
     background-color: #474471;
     border: 2px solid #edf0f2;
     border-radius: 40px;
