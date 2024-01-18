@@ -7,26 +7,56 @@ from financetracker.models import User, Transaction, Asset
 def home():
     return render_template("log-in.html")
 
-@app.route("/log-in")
-def logIn():
-    if request.method == "GET":
-        username = request.form.get("username")
-        password = request.form.get("password")
-        print(username)
-        print(password)
-        return redirect(url_for("dashboard"))
 
+# View for Log-In Page
+@app.route("/log-in", methods=["GET", "POST"])
+def logIn():
+    try:
+        if request.method == "POST":
+            username = request.form.get("username")
+            password = request.form.get("password")
+            user = User.query.filter_by(username=username).first()
+
+            # Checks if users password is the same as in the database
+            if password == user.password:
+                # Grants Log-In
+                return redirect(url_for("dashboard"))
+            else:
+                # Redirects to Log-in
+                return render_template("log-in.html")
+    
+    # If User has the Wrong Username
+    except AttributeError:
+        print("No Account with that username")
+        return render_template("log-in.html")
+
+    return render_template("log-in.html")
+
+
+# View for Register Page
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
-        net_worth_goal = request.form.get("net_worth_goal")
-        savings_goal = request.form.get("savings_goal")
-        new_user = User(username=username,password=password, net_worth_goal=net_worth_goal, savings_goal=savings_goal)
-        db.session.add(new_user)
-        db.session.commit()
-        return redirect(url_for("home"))
+    try:
+        if request.method == "POST":
+            # Adds data to the database
+            username = request.form.get("username")
+            password = request.form.get("password")
+            net_worth_goal = request.form.get("net_worth_goal")
+            savings_goal = request.form.get("savings_goal")
+            new_user = User(username=username,password=password, net_worth_goal=net_worth_goal, savings_goal=savings_goal)
+            
+            # Commits data
+            db.session.add(new_user)
+            db.session.commit()
+
+            # Redirects to Log-In Page
+            return redirect(url_for("logIn"))
+    
+    # If Credentials already taken
+    except:
+        print("Credentials Already Taken")
+        return render_template("register.html")
+
     return render_template("register.html")
 
 
