@@ -130,7 +130,7 @@ input:-webkit-autofill:active{
 }
 
 .submit-button {
-    background-color: #474471;
+    background-color: #4f4480;
     border: 2px solid #edf0f2;
     border-radius: 40px;
     height: 60px;
@@ -360,6 +360,27 @@ h4.special-saving {
     background-color: transparent;
     font-size: 26px;
     color: #edf0f2;
+}
+
+.input.select {
+    min-width: 320px;
+}
+
+option {
+    background-color: #4f4480;
+}
+
+.radio-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.radio-container label {
+    margin-left: 10px;
+    border-bottom: none;
 }
 
 input.input::placeholder {

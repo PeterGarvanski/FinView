@@ -2,9 +2,25 @@
 {% block transaction_screen %}
 <form action="{{ url_for('income_expenses') }}" method="POST" class="asset-form">
     <h1 class="txt-shadow asset-header transaction"><b>Add a Transaction</b></h1>
-    <input type="text" id="transaction_type" placeholder="Income or Expense?" name="transaction_type" class="input txt-shadow" required>
-    <input type="text" id="category" placeholder="Transaction Description" name="category" class="input txt-shadow" required>
+    <select id="category" class="input txt-shadow select">
+        <option value="income">Income</option>
+        <option value="traveling">Traveling</option>
+        <option value="grocerys">Grocery's</option>
+        <option value="Shopping">Shopping</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="other">Other</option>
+      </select>
     <input type="number" id="amount" placeholder="Amount" name="amount" class="input txt-shadow" required>
-    <input type="submit" value="Submit" class="bx-shadow button-clr submit-button">
+    <div class="radio-container">
+        <div>
+            <input type="radio" id="transaction_type_earning" name="transaction_type" value="earning" class="input txt-shadow radio" required>
+            <label for="transaction_type_earning" class="input">Earning</label>
+        </div>
+        <div>
+            <input type="radio" id="transaction_type_expense" name="transaction_type" value="expense" class="input txt-shadow radio" required>
+            <label for="transaction_type_expense" class="input">Expense</label>
+        </div>
+    </div>
+    <input type="submit" value="Submit" class="bx-shadow button-clr submit-button txt-shadow">
 </form>
 {% endblock %}

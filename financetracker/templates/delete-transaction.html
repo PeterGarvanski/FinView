@@ -2,7 +2,7 @@
 {% block transaction_screen %}
 <form action="{{ url_for('income_expenses') }}" method="GET" class="asset-form">
     <h1 class="txt-shadow asset-header extra"><b>Delete a Transaction</b></h1>
-    <input type="text" id="category" placeholder="Transaction Description" name="category" class="input txt-shadow" required>
-    <input type="submit" value="Submit" class="bx-shadow button-clr submit-button">
+    <input type="number" id="category" placeholder="Transaction Id" name="transaction_id" class="input txt-shadow" required>
+    <input type="submit" value="Submit" class="bx-shadow button-clr submit-button txt-shadow">
 </form>
 {% endblock %}
