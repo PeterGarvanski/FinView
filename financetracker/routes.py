@@ -76,8 +76,12 @@ def income_expenses():
     USER_ID = session.get('USER_ID')
     user = User.query.get(USER_ID)
 
-    # Formats salary
-    salary = "{:,}".format(user.salary)
+    # Checks for users salary and formats salary
+    if user.salary:
+        salary = "{:,}".format(user.salary)
+    else:
+        salary = "{:,}".format(36000)
+
     return render_template("income-expenses.html", active_page="income_expenses", salary=salary)
 
 
@@ -115,15 +119,38 @@ def assets():
 @app.route("/add-assets", methods=["GET", "POST"])
 def addAssets():
     if request.method == "POST":
-        asset_name = request.form.get("asset-name")
+        USER_ID = session.get('USER_ID')
+
+        # Adds data to the database
+        asset_name = str(request.form.get("asset-name")).capitalize()
         asset_value = request.form.get("asset-value")
-        new_asset = Asset(asset_name=asset_name, asset_value=asset_value)
+        new_asset = Asset(user_id=USER_ID, asset_name=asset_name, asset_value=asset_value)
+
+        # Commits data
         db.session.add(new_asset)
         db.session.commit()
+
+        # Redirects to asset page
         return redirect(url_for("assets"))
     return render_template("add-asset.html", active_page="assets")
 
 
-@app.route("/delete-assets")
+@app.route("/delete-assets", methods=["GET", "POST"])
 def deleteAssets():
+    if request.method == "POST":
+        USER_ID = session.get('USER_ID')
+        assets = Asset.query.filter_by(user_id=USER_ID).all()
+        asset_name = str(request.form.get("asset-name")).capitalize()
+
+        # Iterate through the assets and delete the one with the specified name
+        for asset in assets:
+            if asset.asset_name == asset_name:
+                db.session.delete(asset)
+
+        # Commit the changes to the database
+        db.session.commit()
+
+        # Redirects to asset page
+        return redirect(url_for("assets"))
+    
     return render_template("delete-asset.html", active_page="assets")

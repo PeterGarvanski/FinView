@@ -5,7 +5,7 @@ class User(db.Model):
     # schema for the User model
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), unique=True, nullable=False)
-    password = db.Column(db.String(25), nullable=False)
+    password = db.Column(db.String(25), unique=False, nullable=False)
     net_worth_goal = db.Column(db.Integer, nullable=False)
     savings_goal = db.Column(db.Integer, nullable=False)
     net_worth = db.Column(db.Integer, nullable=True)
