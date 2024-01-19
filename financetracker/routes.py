@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, session
 from financetracker import app, db
 from financetracker.models import User, Transaction, Asset
 
@@ -20,6 +20,7 @@ def logIn():
             # Checks if users password is the same as in the database
             if password == user.password:
                 # Grants Log-In
+                session["USER_ID"] = user.id
                 return redirect(url_for("dashboard"))
             else:
                 # Redirects to Log-in
@@ -55,10 +56,10 @@ def register():
             # Redirects to Log-In Page
             return redirect(url_for("logIn"))
     
-    # If Credentials already taken
+    # If Username already taken
     except:
-        print("Credentials Already Taken")
-        message = "Credentials Already Taken"
+        print("Username Already Taken")
+        message = "Username Already Taken"
         return render_template("register.html", register_message=message)
 
     return render_template("register.html")
@@ -71,7 +72,13 @@ def dashboard():
 
 @app.route("/income&expenses")
 def income_expenses():
-    return render_template("income-expenses.html", active_page="income_expenses")
+    # Retrieves users credentials
+    USER_ID = session.get('USER_ID')
+    user = User.query.get(USER_ID)
+
+    # Formats salary
+    salary = "{:,}".format(user.salary)
+    return render_template("income-expenses.html", active_page="income_expenses", salary=salary)
 
 
 @app.route("/add-transaction", methods=["GET", "POST"])
@@ -82,9 +89,15 @@ def addTransaction():
 @app.route("/edit-salary", methods=["GET", "POST"])
 def editSalary():
     if request.method == "POST":
-        salary = User(salary=request.form.get("salary"))
-        db.session.add(salary)
+        # Retrieves the salary from the form and the credentials of the logged in user
+        salary = int(request.form.get("salary"))
+        USER_ID = session.get('USER_ID')
+        user = User.query.get(USER_ID)
+
+        # Changes the users salary to the new salary
+        user.salary = salary
         db.session.commit()
+
         return redirect(url_for("income_expenses"))
     return render_template("edit-salary.html", active_page="income_expenses")
 
