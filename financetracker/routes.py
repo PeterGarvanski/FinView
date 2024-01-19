@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for, session
 from financetracker import app, db
 from financetracker.models import User, Transaction, Asset
+from datetime import datetime
 
 
 @app.route("/")
@@ -87,6 +88,22 @@ def income_expenses():
 
 @app.route("/add-transaction", methods=["GET", "POST"])
 def addTransaction():
+    if request.method == "POST":
+        USER_ID = session.get('USER_ID')
+
+        # Adds data to the database
+        date = datetime.today()
+        transaction_type = request.form.get("transaction_type")
+        category = request.form.get("category")
+        amount = request.form.get("amount")
+        new_transaction = Transaction(user_id=USER_ID, date=date, transaction_type=transaction_type, category=category, amount=amount)
+
+        # Commits data
+        db.session.add(new_transaction)
+        db.session.commit()
+
+        # Redirects to income and expenses page
+        return redirect(url_for("income_expenses"))
     return render_template("add-transaction.html", active_page="income_expenses")
 
 
@@ -106,9 +123,24 @@ def editSalary():
     return render_template("edit-salary.html", active_page="income_expenses")
 
 
-@app.route("/delete-transaction")
+@app.route("/delete-transaction", methods=["GET", "POST"])
 def deleteTransaction():
+    if request.method == "POST":
+        # Retrieves the id from the form and the credentials of the logged in user
+        USER_ID = session.get('USER_ID')
+        transaction_id = request.form.get("transaction_id")
+        transaction = Transaction.query.filter_by(user_id=USER_ID, transaction_id=transaction_id).first()
+
+        # Commit the changes to the database if the transaction exists
+        if transaction:
+            db.session.delete(transaction)
+            db.session.commit()
+
+        # Redirect to asset page whether or not the transaction was found
+        return redirect(url_for("income_expenses"))
+
     return render_template("delete-transaction.html", active_page="income_expenses")
+
 
 
 @app.route("/assets")

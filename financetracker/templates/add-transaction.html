@@ -1,8 +1,8 @@
 {% extends "income-expenses.html" %}
 {% block transaction_screen %}
-<form action="{{ url_for('income_expenses') }}" method="POST" class="asset-form">
+<form action="{{ url_for('addTransaction') }}" method="POST" class="asset-form">
     <h1 class="txt-shadow asset-header transaction"><b>Add a Transaction</b></h1>
-    <select id="category" class="input txt-shadow select">
+    <select id="category" class="input txt-shadow select" name="category">
         <option value="income">Income</option>
         <option value="traveling">Traveling</option>
         <option value="grocerys">Grocery's</option>
