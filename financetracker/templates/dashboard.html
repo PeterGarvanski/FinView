@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="page-title txt-shadow">Most Recent Expenses</h1>
+            <h1 class="page-title txt-shadow">Most Recent Transactions</h1>
             <div class="table">
                 <div class="trow header bx-shadow">
                     <div class="cell heads txt-shadow">Id</div>
@@ -12,8 +12,26 @@
                     <div class="cell heads txt-shadow">Category</div>
                     <div class="cell heads rem txt-shadow">Amount</div>
                 </div>
-
-                <div class="trow bx-shadow">
+                {% if latest_transactions|length == 0 %}
+                <h2 class="no-transactions txt-shadow">Add A Transaction To View</h2>
+                {% else %}
+                    {% for transaction in latest_transactions %}
+                    <div class="trow bx-shadow">
+                        <div class="cell">{{ transaction.transaction_id }}</div>
+                        <div class="cell">{{ transaction.date }}</div>
+                        <div class="cell">
+                            {% if transaction.transaction_type == "earning" %}
+                            <i class="fas fa-circle-up"></i>
+                            {% else %}
+                            <i class="fas fa-circle-down"></i>
+                            {% endif %}
+                        </div>
+                        <div class="cell">{{ transaction.category }}</div>
+                        <div class="cell">£{{ transaction.amount }}</div>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                <!-- <div class="trow bx-shadow">
                     <div class="cell">5</div>
                     <div class="cell">09, Jan, 24</div>
                     <div class="cell"><i class="fas fa-circle-up"></i></div>
@@ -51,7 +69,7 @@
                     <div class="cell"><i class="fas fa-circle-down"></i></div>
                     <div class="cell"><i class="fas fa-cart-shopping"></i></div>
                     <div class="cell">£16.11</div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="col-md-6">

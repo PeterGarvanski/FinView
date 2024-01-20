@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for, session
 from financetracker import app, db
 from financetracker.models import User, Transaction, Asset
+from sqlalchemy import desc
 from datetime import datetime
 
 
@@ -85,6 +86,7 @@ def dashboard():
     # Fetches all the users transactions that fit the query
     savings = 0
     transactions = Transaction.query.filter_by(user_id=USER_ID, transaction_type="earning", category="income").all()
+    latest_transactions = Transaction.query.filter_by(user_id=USER_ID).order_by(desc(Transaction.transaction_id)).limit(5).all()
 
     # Loops through each transaction incrementing the savings value
     for transaction in transactions:
@@ -95,7 +97,7 @@ def dashboard():
     user.savings = savings
     db.session.commit()
 
-    return render_template("dashboard.html", active_page="dashboard", net_worth_goal=net_worth_goal, net_worth=net_worth, savings_goal=savings_goal, savings=savings)
+    return render_template("dashboard.html", active_page="dashboard", latest_transactions=latest_transactions, net_worth_goal=net_worth_goal, net_worth=net_worth, savings_goal=savings_goal, savings=savings)
 
 
 @app.route("/income&expenses")

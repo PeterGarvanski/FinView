@@ -124,6 +124,14 @@ input:-webkit-autofill:active{
     font-weight: 500;
 }
 
+.no-transactions {
+    color: #edf0f2;
+    font-size: 30px;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 40px;
+}
+
 .my-labels {
     font-size: 36px;
     color: #edf0f2;
