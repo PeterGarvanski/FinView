@@ -8,7 +8,7 @@
                 <div class="trow header bx-shadow">
                     <div class="cell heads txt-shadow">Id</div>
                     <div class="cell heads txt-shadow">Date</div>
-                    <div class="cell heads txt-shadow">Expenditure</div>
+                    <div class="cell heads txt-shadow">Transaction</div>
                     <div class="cell heads txt-shadow">Category</div>
                     <div class="cell heads rem txt-shadow">Amount</div>
                 </div>
@@ -26,50 +26,25 @@
                             <i class="fas fa-circle-down"></i>
                             {% endif %}
                         </div>
-                        <div class="cell">{{ transaction.category }}</div>
+                        <div class="cell">
+                            {% if transaction.category == "income" %}
+                            <i class="fas fa-money-bills"></i>
+                            {% elif transaction.category == "traveling" %}
+                            <i class="fas fa-plane"></i>
+                            {% elif transaction.category == "grocerys" %}
+                            <i class="fas fa-cart-shopping"></i>
+                            {% elif transaction.category == "shopping" %}
+                            <i class="fas fa-shirt"></i>
+                            {% elif transaction.category == "entertainment" %}
+                            <i class="fas fa-ticket"></i>
+                            {% else %}
+                            <i class="fas fa-question"></i>
+                            {% endif %}
+                        </div>
                         <div class="cell">£{{ transaction.amount }}</div>
                     </div>
                     {% endfor %}
                 {% endif %}
-                <!-- <div class="trow bx-shadow">
-                    <div class="cell">5</div>
-                    <div class="cell">09, Jan, 24</div>
-                    <div class="cell"><i class="fas fa-circle-up"></i></div>
-                    <div class="cell"><i class="fas fa-building-columns"></i></div>
-                    <div class="cell">£50.00</div>
-                </div>
-
-                <div class="trow bx-shadow">
-                    <div class="cell">4</div>
-                    <div class="cell">16, Dec, 23</div>
-                    <div class="cell"><i class="fas fa-circle-down"></i></div>
-                    <div class="cell"><i class="fas fa-cart-shopping"></i></div>
-                    <div class="cell">£80.50</div>
-                </div>
-
-                <div class="trow bx-shadow">
-                    <div class="cell">3</div>
-                    <div class="cell">04, Dec, 23</div>
-                    <div class="cell"><i class="fas fa-circle-down"></i></div>
-                    <div class="cell"><i class="fas fa-car"></i></div>
-                    <div class="cell">£63.17</div>
-                </div>
-
-                <div class="trow bx-shadow">
-                    <div class="cell">2</div>
-                    <div class="cell">28, Nov, 23</div>
-                    <div class="cell"><i class="fas fa-circle-up"></i></div>
-                    <div class="cell"><i class="fas fa-building-columns"></i></div>
-                    <div class="cell">£28.56</div>
-                </div>
-
-                <div class="trow bx-shadow">
-                    <div class="cell">1</div>
-                    <div class="cell">03, Jan, 23</div>
-                    <div class="cell"><i class="fas fa-circle-down"></i></div>
-                    <div class="cell"><i class="fas fa-cart-shopping"></i></div>
-                    <div class="cell">£16.11</div>
-                </div> -->
             </div>
         </div>
         <div class="col-md-6">
@@ -77,7 +52,13 @@
                 <div class="col-md-6 chart-box">
                     <h4 class="centre-text savings-text special-saving txt-shadow">Net Worth Goal: £{{ net_worth_goal }}</h4>
                     <canvas id="net-worth-chart"></canvas>
-                    <h4 class="centre-text savings-text txt-shadow">Net Worth: £{{ net_worth }}</h4>
+                    <h4 class="centre-text savings-text txt-shadow">
+                        {% if user.salary == None %}
+                        Net Worth: £0
+                        {% else %}
+                        Net Worth: £{{ net_worth }}
+                        {% endif %}
+                    </h4>
                 </div>
                 <div class="col-md-6 chart-box">
                     <h4 class="centre-text savings-text special-saving txt-shadow">Savings Goal: £ {{ savings_goal }}</h4>

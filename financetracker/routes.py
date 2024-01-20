@@ -76,7 +76,7 @@ def dashboard():
     savings_goal = user.savings_goal
 
     # Fetches all the users assets
-    net_worth = 0
+    net_worth = user.salary
     assets = Asset.query.filter_by(user_id=USER_ID).all()
 
     # Loops through each asset incrementing the net worth value
@@ -97,7 +97,7 @@ def dashboard():
     user.savings = savings
     db.session.commit()
 
-    return render_template("dashboard.html", active_page="dashboard", latest_transactions=latest_transactions, net_worth_goal=net_worth_goal, net_worth=net_worth, savings_goal=savings_goal, savings=savings)
+    return render_template("dashboard.html", active_page="dashboard", latest_transactions=latest_transactions, net_worth_goal=net_worth_goal, net_worth=net_worth, savings_goal=savings_goal, savings=savings, user=user)
 
 
 @app.route("/income&expenses")
