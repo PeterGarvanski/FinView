@@ -57,14 +57,14 @@
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-6 chart-box">
-                    <h4 class="centre-text savings-text special-saving txt-shadow">Net Worth Goal: £10,000</h4>
+                    <h4 class="centre-text savings-text special-saving txt-shadow">Net Worth Goal: £{{ net_worth_goal }}</h4>
                     <canvas id="net-worth-chart"></canvas>
-                    <h4 class="centre-text savings-text txt-shadow">Net Worth: £2,389</h4>
+                    <h4 class="centre-text savings-text txt-shadow">Net Worth: £{{ net_worth }}</h4>
                 </div>
                 <div class="col-md-6 chart-box">
-                    <h4 class="centre-text savings-text special-saving txt-shadow">Savings Goal: £100</h4>
+                    <h4 class="centre-text savings-text special-saving txt-shadow">Savings Goal: £ {{ savings_goal }}</h4>
                     <canvas id="savings-chart"></canvas>
-                    <h4 class="centre-text savings-text txt-shadow">Amount Saved: £67</h4>
+                    <h4 class="centre-text savings-text txt-shadow">Amount Saved: £{{ savings }}</h4>
                 </div>
             </div>
         </div>

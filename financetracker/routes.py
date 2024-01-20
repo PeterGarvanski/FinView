@@ -68,7 +68,34 @@ def register():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html", active_page="dashboard")
+    # Retrieves users credentials
+    USER_ID = session.get('USER_ID')
+    user = User.query.get(USER_ID)
+    net_worth_goal = user.net_worth_goal
+    savings_goal = user.savings_goal
+
+    # Fetches all the users assets
+    net_worth = 0
+    assets = Asset.query.filter_by(user_id=USER_ID).all()
+
+    # Loops through each asset incrementing the net worth value
+    for asset in assets:
+        net_worth += int(asset.asset_value)
+
+    # Fetches all the users transactions that fit the query
+    savings = 0
+    transactions = Transaction.query.filter_by(user_id=USER_ID, transaction_type="earning", category="income").all()
+
+    # Loops through each transaction incrementing the savings value
+    for transaction in transactions:
+        savings += int(transaction.amount)
+
+    # Adds net worth and savings to the database
+    user.net_worth = net_worth
+    user.savings = savings
+    db.session.commit()
+
+    return render_template("dashboard.html", active_page="dashboard", net_worth_goal=net_worth_goal, net_worth=net_worth, savings_goal=savings_goal, savings=savings)
 
 
 @app.route("/income&expenses")
