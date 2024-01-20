@@ -97,8 +97,6 @@ def dashboard():
     user.savings = savings
     db.session.commit()
 
-    print(user)
-
     return render_template("dashboard.html", active_page="dashboard", latest_transactions=latest_transactions, net_worth_goal=net_worth_goal, net_worth=net_worth, savings_goal=savings_goal, savings=savings, user=user)
 
 
@@ -176,7 +174,19 @@ def deleteTransaction():
 
 @app.route("/assets")
 def assets():
-    return render_template("assets.html", active_page="assets")
+    USER_ID = session.get('USER_ID')
+    assets = Asset.query.filter_by(user_id=USER_ID).all()
+
+    total_asset_value = 0
+    asset_names = []
+    asset_values = []
+
+    for asset in assets:
+        total_asset_value += int(asset.asset_value)
+        asset_names.append(asset.asset_name)
+        asset_values.append(asset.asset_value)
+
+    return render_template("assets.html", active_page="assets", total_asset_value=total_asset_value, asset_names=asset_names, asset_values=asset_values)
 
 
 @app.route("/add-assets", methods=["GET", "POST"])

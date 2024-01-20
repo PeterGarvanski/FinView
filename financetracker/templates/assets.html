@@ -19,11 +19,13 @@
                 <canvas id="asset-chart"></canvas>
             </div>
             <div class="salary-circle asset-sum centre">
-                <h2 class="salary txt-shadow">£250,000</h2>
+                <h2 class="salary txt-shadow">£{{ total_asset_value }}</h2>
             </div>
         </div>
     </div>
 </div>
+<div id="asset-name-container" data="{{ asset_names }}"></div>
+<div id="asset-value-container" data="{{ asset_values }}"></div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/assets.js') }}"></script>
 {% endblock %}

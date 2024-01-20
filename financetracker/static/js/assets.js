@@ -1,19 +1,28 @@
-// Add Doughnut Chart data and options here// Add Doughnut Chart data and options here
+document.addEventListener('DOMContentLoaded', function () {
+    // Collects data from html element
+    let nameContainer = document.getElementById("asset-name-container");
+    let assetNamesString = nameContainer.getAttribute("data");
+    let assetNames = JSON.parse(assetNamesString.replace(/'/g, '"'));
 
-var assetCtx = document.getElementById('asset-chart').getContext('2d');
-var assetDoughnutChart = new Chart(assetCtx, {
-    type: 'doughnut',
-    data: {
-        labels: ["House", "Stocks", "Crypto", "Cars"],
-        datasets: [{
-            data: [45, 27, 61, 36],
-            borderColor: "#edf0f2",
-            backgroundColor: ["#2d2354", "#edf0f2a8"],
-            borderWidth: 5,
-        }]
-    },
+    let valueContainer = document.getElementById("asset-value-container");
+    let assetValuesString = valueContainer.getAttribute("data");
+    let assetValues = JSON.parse(assetValuesString.replace(/'/g, '"'));
 
-    options: {
-        display: false, // Set to false to hide the legend
-    }
+    // Creates chart with database values
+    var assetCtx = document.getElementById("asset-chart").getContext("2d");
+    new Chart(assetCtx, {
+        type: "doughnut",
+        data: {
+            labels: assetNames,
+            datasets: [{
+                data: assetValues,
+                borderColor: "#edf0f2",
+                backgroundColor: ["#2d2354", "#edf0f2a8"],
+                borderWidth: 5,
+            }]
+        },
+        options: {
+            display: false,
+        }
+    });
 });

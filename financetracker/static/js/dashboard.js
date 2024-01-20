@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Collects data from html element
     var dataContainer = document.getElementById('dashboard-data-container');
     var jsonData = JSON.parse(dataContainer.getAttribute('data'));
 
+    // If data is larger than goal limit graph to 100%
     if (jsonData.net_worth_goal <= jsonData.net_worth) {
         jsonData.net_worth = jsonData.net_worth_goal
     }
@@ -10,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         jsonData.savings = jsonData.savings_goal
     }
 
+    // Creates chart with database values
     var savingsCtx = document.getElementById("savings-chart").getContext("2d");
     new Chart(savingsCtx, {
         type: "doughnut",
@@ -26,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Creates chart with database values
     var netWorthCtx = document.getElementById("net-worth-chart").getContext("2d");
     new Chart(netWorthCtx, {
         type: "doughnut",
