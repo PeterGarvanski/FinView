@@ -69,6 +69,7 @@
         </div>
     </div>
 </div>
+<div id="dashboard-data-container" data='{{ {"net_worth_goal": net_worth_goal, "net_worth": net_worth, "savings_goal": savings_goal, "savings": savings} | tojson | safe }}'></div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 {% endblock %}

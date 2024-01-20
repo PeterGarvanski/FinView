@@ -97,6 +97,8 @@ def dashboard():
     user.savings = savings
     db.session.commit()
 
+    print(user)
+
     return render_template("dashboard.html", active_page="dashboard", latest_transactions=latest_transactions, net_worth_goal=net_worth_goal, net_worth=net_worth, savings_goal=savings_goal, savings=savings, user=user)
 
 
@@ -110,7 +112,7 @@ def income_expenses():
     if user.salary:
         salary = "{:,}".format(user.salary)
     else:
-        salary = "{:,}".format(36000)
+        salary = 0
 
     return render_template("income-expenses.html", active_page="income_expenses", salary=salary)
 
