@@ -159,9 +159,10 @@ def deleteTransaction():
         USER_ID = session.get('USER_ID')
         transaction_id = request.form.get("transaction_id")
         transaction = Transaction.query.filter_by(user_id=USER_ID, transaction_id=transaction_id).first()
+        delete = request.form.get("delete_transaction")
 
         # Commit the changes to the database if the transaction exists
-        if transaction:
+        if transaction and delete == "yes":
             db.session.delete(transaction)
             db.session.commit()
 
@@ -214,11 +215,13 @@ def deleteAssets():
         USER_ID = session.get('USER_ID')
         assets = Asset.query.filter_by(user_id=USER_ID).all()
         asset_name = str(request.form.get("asset-name")).capitalize()
+        delete = request.form.get("delete_asset")
 
         # Iterate through the assets and delete the one with the specified name
-        for asset in assets:
-            if asset.asset_name == asset_name:
-                db.session.delete(asset)
+        if delete == "yes":
+            for asset in assets:
+                if asset.asset_name == asset_name:
+                    db.session.delete(asset)
 
         # Commit the changes to the database
         db.session.commit()

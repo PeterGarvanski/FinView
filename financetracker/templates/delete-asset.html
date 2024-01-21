@@ -3,6 +3,17 @@
 <form action="{{ url_for('deleteAssets') }}" method="POST" class="asset-form">
     <h1 class="txt-shadow asset-header"><b>Delete an Asset</b></h1>
     <input type="text" id="asset-name" placeholder="Asset Name" name="asset-name" class="input txt-shadow" required>
+    <h4 class="error-message">Are you sure you want to delete this Asset?</h4>
+    <div class="radio-container">
+        <div>
+            <input type="radio" id="delete_yes" name="delete_asset" value="yes" class="input txt-shadow radio" required>
+            <label for="delete_yes" class="input">Yes</label>
+        </div>
+        <div>
+            <input type="radio" id="delete_no" name="delete_asset" value="no" class="input txt-shadow radio" required>
+            <label for="delete_no" class="input">No</label>
+        </div>
+    </div>
     <input type="submit" value="Sumbit" class="bx-shadow button-clr submit-button txt-shadow">
 </form>
 {% endblock%}
