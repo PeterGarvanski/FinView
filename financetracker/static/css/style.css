@@ -405,6 +405,11 @@ h4.special-saving {
     text-align: center;
 }
 
+#delete-asset {
+    max-width: 250px;
+    text-align: center;
+}
+
 .buttons-gap {
     gap: 40px;
 }
@@ -473,20 +478,119 @@ h4.error-message {
 }
 
 @media screen and (min-width: 1400px) and (max-width: 1800px) {
+    
+    /* CSS For the dashboard page */
+    
+    body.base {
+        background-position: 0px -130px;
+    }
 
+    .chart-box {
+        width: 350px;
+    }
+
+    h4.special-saving {
+        margin-top: 185px;
+    }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
+    
+    /* CSS For the Navigation page */
+
+    .right-text {
+        text-align: center;
+    }
+
+    .main-nav {
+        gap: 25px;
+    }
+
+    /* CSS For the dashboard page */
+
+    body.base {
+        background-image: none;
+    }
+
+    .chart-box {
+        margin-left: 120px;
+    }
+
+    .special-saving.chart {
+        margin-top: 80px;
+    }
+
+    /* CSS For the income and expenses page */
+
+    .display-screen {
+        width: 500px;
+        height: 350px;
+    }
+
+    .bttn {
+        padding: 15px 20px;
+        font-size: 20px;
+    }
+
+    /* CSS For the forms */
+
+    .asset-header {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .submit-button.main {
+        font-size: 22px;
+        padding: 8px 25px;
+        margin-top: 0;
+    }
+
+    .error-message.delete {
+        font-size: 22px;
+    }
+
+    /* CSS For the assets page */
+
+    #add-asset {
+        max-width: 200px;
+    }
+
+    #delete-asset {
+        max-width: 200px;
+    }
+
+    .chart-box.asset-chart {
+        width: 400px;
+        top: 180px;
+    }
+
+    .salary-circle.asset-sum {
+        top: 305px;
+        right: 149px;
+        width: 182px;
+        height: 182px;
+    }
+
+    .asset-sum > .salary {
+        font-size: 30px;
+    }
+
 
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
+    
+    /* CSS For the log-in and registration page */ 
+    
     .nav-menu {
         gap: 50%;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
+    
+    /* CSS For the log-in and registration page */
+
     .nav-menu {
         gap: 40%;
     }
@@ -516,6 +620,9 @@ h4.error-message {
 }
 
 @media screen and (min-width: 576px) and (max-width: 768px) {
+    
+    /* CSS For the log-in and registration page */
+
     .nav-menu {
         gap: 30%;
     }
@@ -545,6 +652,9 @@ h4.error-message {
 }
 
 @media screen and (min-width: 320px) and (max-width: 576px) {
+    
+    /* CSS For the log-in and registration page */
+
     .nav-menu {
         gap: 20%;
     }
@@ -559,7 +669,7 @@ h4.error-message {
     }
 
     .page-heading {
-        font-size: 40px;
+        font-size: 36px;
     }
 
     .input.input.extra-space {
@@ -570,9 +680,5 @@ h4.error-message {
     .submit-button {
         font-size: 16px;
         padding: 10px 28px;
-    }
-
-    .submit-button.log-in {
-        background-color: #474471;
     }
 }
