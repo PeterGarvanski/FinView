@@ -904,4 +904,111 @@ h4.error-message {
         font-size: 16px;
         padding: 10px 28px;
     }
+
+    .nav-link {
+        font-size: 13px;
+    }
+
+    /* CSS For the dashboard page */
+
+    body.base {
+        background-image: none;
+    }
+
+    .page-title {
+        font-size: 30px;
+    }
+
+    .sm-remove {
+        display: none;
+    }
+    
+    .cell.heads {
+        font-size: 12px;
+    }
+
+    .cell {
+        font-size: 8px;
+        padding: 4px;
+    }
+
+    .chart-box.column-centre{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto 0 auto;
+    }
+
+    .special-saving.chart {
+        margin-top: 40px;
+    }
+
+    .savings-text {
+        font-size: 20px;
+    }
+
+    /* CSS For the income and expenses page */
+
+    .display-screen {
+        width: 280px;
+        height: 400px;
+    }
+
+    .xtra-spc {
+        margin-bottom: 40px;
+    }
+
+    .bttn {
+        font-size: 10px;
+        padding: 15px 20px;
+    }
+
+    .gap-centre {
+        gap: 20px;
+    }
+    
+    .salary-circle {
+        width: 250px;
+        height: 250px;
+    }
+
+    .salary {
+        font-size: 30px;
+    }
+    .error-message.delete {
+        font-size: 14px;
+    }
+
+    /* CSS For the assets page */
+
+    #add-asset {
+        max-width: 120px;
+    }
+
+    #delete-asset {
+        max-width: 120px;
+    }
+
+    .chart-box.asset-chart {
+        width: 300px;
+        top: 100px;
+    }
+
+    .salary-circle.asset-sum {
+        width: 140px;
+        height: 140px;
+        transform: translateY(188%);
+    }
+
+    .input {
+        max-width: 230px;
+        font-size: 20px;
+    }
+
+    .input.select {
+        min-width: 230px;
+    }
+
+    .asset-sum > .salary {
+        font-size: 30px;
+    }
 }
