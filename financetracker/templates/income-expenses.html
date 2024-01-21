@@ -2,12 +2,12 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="salary-circle centre bx-shadow txt-shadow">
                 <h2 class="salary">£{{ salary }}</h2>
             </div>
         </div>
-        <div class="col-md-6 centre">
+        <div class="col-lg-6 centre">
             <div class="display-screen" id="transaction-screen centre">
                 {% block transaction_screen %}
                 {% endblock %}
@@ -15,12 +15,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 centre">
+        <div class="col-lg-6 centre">
             <a href="{{ url_for('editSalary') }}" class="bx-shadow bttn txt-shadow">Edit Salary</a>
         </div>
-        <div class="col-md-6 gap-centre">
-            <a href="{{ url_for('addTransaction') }}" class="bx-shadow bttn txt-shadow" id="add-transaction">Add Transaction</a>
-            <a href="{{ url_for('deleteTransaction') }}" class="bx-shadow bttn txt-shadow" id="delete-transaction">Delete Transaction</a>
+        <div class="col-lg-6 gap-centre">
+            <a href="{{ url_for('addTransaction') }}" class="bx-shadow bttn txt-shadow xtra-spc" id="add-transaction">Add Transaction</a>
+            <a href="{{ url_for('deleteTransaction') }}" class="bx-shadow bttn txt-shadow xtra-spc" id="delete-transaction">Delete Transaction</a>
         </div>
     </div>
 </div>

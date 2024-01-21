@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12 col-lg-6">
             <div class="row centre">
                 <div class="display-screen centre" id="asset-screen">
                     {% block asset_screen %}
@@ -14,7 +14,7 @@
                 <a href="{{ url_for('deleteAssets') }}" class="bx-shadow bttn txt-shadow" id="delete-asset">Delete Asset</a>
             </div>
         </div>
-        <div class="col-md-6 centre relative">
+        <div class="col-md-12 col-lg-6 centre relative">
             <div class="chart-box asset-chart">
                 <canvas id="asset-chart"></canvas>
             </div>
