@@ -28,6 +28,7 @@ body.log-in {
     height: 400px;
     left: -200px;
     bottom: -200px;
+    pointer-events: none;
   }
   
   .large{
@@ -35,6 +36,7 @@ body.log-in {
     height: 600px;
     left: -300px;
     bottom: -300px;
+    pointer-events: none;
   }
   
   .xlarge{
@@ -42,6 +44,7 @@ body.log-in {
     height: 800px;
     left: -400px;
     bottom: -400px;
+    pointer-events: none;
   }
   
   .xxlarge{
@@ -49,6 +52,7 @@ body.log-in {
     height: 1000px;
     left: -500px;
     bottom: -500px;
+    pointer-events: none;
   }
   
   .shade1{
@@ -326,6 +330,7 @@ h4.special-saving {
 
 .chart-box {
     width: 400px;
+    z-index: 2;
 }
 
 /* CSS For Income & Expenses Page */
@@ -390,10 +395,10 @@ h4.special-saving {
 
 .salary-circle.asset-sum {
     position: absolute;
-    width: 235px;
-    height: 235px;
+    width: 250px;
+    height: 250px;
     margin: auto;
-    transform: translateY(13%);
+    transform: translateY(15%);
 }
 
 .asset-sum > .salary {
@@ -506,7 +511,7 @@ h4.error-message {
     .salary-circle.asset-sum {
         width: 240px;
         height: 240px;
-        transform: translateY(20%);
+        transform: translateY(25%);
     }
 
 }
@@ -586,7 +591,7 @@ h4.error-message {
     .salary-circle.asset-sum {
         width: 182px;
         height: 182px;
-        transform: translateY(15%);
+        transform: translateY(20%);
     }
 
     .asset-sum > .salary {
@@ -671,7 +676,7 @@ h4.error-message {
     .salary-circle.asset-sum {
         width: 182px;
         height: 182px;
-        transform: translateY(15%);
+        transform: translateY(20%);
     }
 
     .asset-sum > .salary {
@@ -762,7 +767,7 @@ h4.error-message {
     .salary-circle.asset-sum {
         width: 182px;
         height: 182px;
-        transform: translateY(173%);
+        transform: translateY(178%);
     }
 
     .asset-sum > .salary {
@@ -799,6 +804,16 @@ h4.error-message {
     .submit-button {
         font-size: 16px;
         padding: 10px 28px;
+    }
+    
+    .main-nav {
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .nav-element {
+        justify-content: center;
+        gap: 5%;
     }
 
     .nav-link {
@@ -866,11 +881,11 @@ h4.error-message {
     .salary-circle.asset-sum {
         width: 182px;
         height: 182px;
-        transform: translateY(173%);
+        transform: translateY(178%);
     }
 
     .asset-sum > .salary {
-        font-size: 30px;
+        font-size: 26px;
     }
 }
 
@@ -905,9 +920,20 @@ h4.error-message {
         padding: 10px 28px;
     }
 
-    .nav-link {
-        font-size: 13px;
+    .main-nav {
+        padding-left: 0;
+        width: 100%;
     }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .nav-element {
+        gap: 5%;
+        justify-content: center;
+    }
+
 
     /* CSS For the dashboard page */
 
@@ -996,7 +1022,7 @@ h4.error-message {
     .salary-circle.asset-sum {
         width: 140px;
         height: 140px;
-        transform: translateY(188%);
+        transform: translateY(195%);
     }
 
     .input {
@@ -1009,6 +1035,12 @@ h4.error-message {
     }
 
     .asset-sum > .salary {
-        font-size: 30px;
+        font-size: 20px;
+    }
+
+    .sm-centre {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
             datasets: [{
                 data: assetValues,
                 borderColor: "#edf0f2",
-                backgroundColor: [ "#edf0f2a8", "#4f4480", "#2d2354"],
+                backgroundColor: [ "#b4b5c6", "#4f4480", "#2d2354"],
                 borderWidth: 5,
             }]
         },
