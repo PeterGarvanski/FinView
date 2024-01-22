@@ -49,14 +49,22 @@ def register():
             password = request.form.get("password")
             net_worth_goal = request.form.get("net_worth_goal")
             savings_goal = request.form.get("savings_goal")
-            new_user = User(username=username,password=password, net_worth_goal=net_worth_goal, savings_goal=savings_goal)
-            
-            # Commits data
-            db.session.add(new_user)
-            db.session.commit()
 
-            # Redirects to Log-In Page
-            return redirect(url_for("logIn"))
+            if int(net_worth_goal) < 0:
+                message = "Net Worth Goal can't be negative!"
+                return render_template("register.html", register_message=message)
+            elif int(savings_goal) < 0:
+                message = "Savings Goal can't be negative!"
+                return render_template("register.html", register_message=message)
+            else:
+                new_user = User(username=username,password=password, net_worth_goal=net_worth_goal, savings_goal=savings_goal)
+                
+                # Commits data
+                db.session.add(new_user)
+                db.session.commit()
+
+                # Redirects to Log-In Page
+                return redirect(url_for("logIn"))
     
     # If Username already taken
     except:
@@ -117,8 +125,10 @@ def income_expenses():
 
 @app.route("/add-transaction", methods=["GET", "POST"])
 def addTransaction():
+    USER_ID = session.get('USER_ID')
+    user = User.query.get(USER_ID)
+
     if request.method == "POST":
-        USER_ID = session.get('USER_ID')
 
         # Adds data to the database
         date = datetime.today()
@@ -133,30 +143,37 @@ def addTransaction():
 
         # Redirects to income and expenses page
         return redirect(url_for("income_expenses"))
-    return render_template("add-transaction.html", active_page="income_expenses")
+    
+    salary = "{:,}".format(user.salary)
+    return render_template("add-transaction.html", active_page="income_expenses", salary=salary)
 
 
 @app.route("/edit-salary", methods=["GET", "POST"])
 def editSalary():
+    USER_ID = session.get('USER_ID')
+    user = User.query.get(USER_ID)
+
     if request.method == "POST":
         # Retrieves the salary from the form and the credentials of the logged in user
         salary = int(request.form.get("salary"))
-        USER_ID = session.get('USER_ID')
-        user = User.query.get(USER_ID)
 
         # Changes the users salary to the new salary
         user.salary = salary
         db.session.commit()
 
         return redirect(url_for("income_expenses"))
-    return render_template("edit-salary.html", active_page="income_expenses")
+
+    salary = "{:,}".format(user.salary)
+    return render_template("edit-salary.html", active_page="income_expenses", salary=salary)
 
 
 @app.route("/delete-transaction", methods=["GET", "POST"])
 def deleteTransaction():
+    USER_ID = session.get('USER_ID')
+    user = User.query.get(USER_ID)
+
     if request.method == "POST":
         # Retrieves the id from the form and the credentials of the logged in user
-        USER_ID = session.get('USER_ID')
         transaction_id = request.form.get("transaction_id")
         transaction = Transaction.query.filter_by(user_id=USER_ID, transaction_id=transaction_id).first()
         delete = request.form.get("delete_transaction")
@@ -168,8 +185,9 @@ def deleteTransaction():
 
         # Redirect to asset page whether or not the transaction was found
         return redirect(url_for("income_expenses"))
-
-    return render_template("delete-transaction.html", active_page="income_expenses")
+    
+    salary = "{:,}".format(user.salary)
+    return render_template("delete-transaction.html", active_page="income_expenses", salary=salary)
 
 
 
@@ -187,13 +205,15 @@ def assets():
         asset_names.append(asset.asset_name)
         asset_values.append(asset.asset_value)
 
+    total_asset_value = "{:,}".format(total_asset_value)
+
     return render_template("assets.html", active_page="assets", total_asset_value=total_asset_value, asset_names=asset_names, asset_values=asset_values)
 
 
 @app.route("/add-assets", methods=["GET", "POST"])
 def addAssets():
+    USER_ID = session.get('USER_ID')
     if request.method == "POST":
-        USER_ID = session.get('USER_ID')
 
         # Adds data to the database
         asset_name = str(request.form.get("asset-name")).capitalize()
@@ -206,13 +226,28 @@ def addAssets():
 
         # Redirects to asset page
         return redirect(url_for("assets"))
-    return render_template("add-asset.html", active_page="assets")
+    
+    assets = Asset.query.filter_by(user_id=USER_ID).all()
+
+    total_asset_value = 0
+    asset_names = []
+    asset_values = []
+
+    for asset in assets:
+        total_asset_value += int(asset.asset_value)
+        asset_names.append(asset.asset_name)
+        asset_values.append(asset.asset_value)
+
+    total_asset_value = "{:,}".format(total_asset_value)
+
+    return render_template("add-asset.html", active_page="assets", total_asset_value=total_asset_value, asset_names=asset_names, asset_values=asset_values)
 
 
 @app.route("/delete-assets", methods=["GET", "POST"])
 def deleteAssets():
+    USER_ID = session.get('USER_ID')
+
     if request.method == "POST":
-        USER_ID = session.get('USER_ID')
         assets = Asset.query.filter_by(user_id=USER_ID).all()
         asset_name = str(request.form.get("asset-name")).capitalize()
         delete = request.form.get("delete_asset")
@@ -229,4 +264,17 @@ def deleteAssets():
         # Redirects to asset page
         return redirect(url_for("assets"))
     
-    return render_template("delete-asset.html", active_page="assets")
+    assets = Asset.query.filter_by(user_id=USER_ID).all()
+
+    total_asset_value = 0
+    asset_names = []
+    asset_values = []
+
+    for asset in assets:
+        total_asset_value += int(asset.asset_value)
+        asset_names.append(asset.asset_name)
+        asset_values.append(asset.asset_value)
+
+    total_asset_value = "{:,}".format(total_asset_value)
+
+    return render_template("delete-asset.html", active_page="assets", total_asset_value=total_asset_value, asset_names=asset_names, asset_values=asset_values)
