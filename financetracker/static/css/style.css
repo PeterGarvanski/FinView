@@ -280,6 +280,7 @@ body.base {
     max-width: 800px;
     margin-top: 20px;
     background-color: #2d2354;
+    align-items: center;
 }
 
 .header {
@@ -509,9 +510,9 @@ h4.error-message {
     }
 
     .salary-circle.asset-sum {
-        width: 240px;
-        height: 240px;
-        transform: translateY(25%);
+        width: 250px;
+        height: 250px;
+        transform: translateY(22%);
     }
 
 }
@@ -589,9 +590,9 @@ h4.error-message {
     }
 
     .salary-circle.asset-sum {
-        width: 182px;
-        height: 182px;
-        transform: translateY(20%);
+        width: 200px;
+        height: 200px;
+        transform: translateY(17%);
     }
 
     .asset-sum > .salary {
@@ -674,9 +675,9 @@ h4.error-message {
     }
 
     .salary-circle.asset-sum {
-        width: 182px;
-        height: 182px;
-        transform: translateY(20%);
+        width: 200px;
+        height: 200px;
+        transform: translateY(17%);
     }
 
     .asset-sum > .salary {
@@ -765,9 +766,9 @@ h4.error-message {
     }
 
     .salary-circle.asset-sum {
-        width: 182px;
-        height: 182px;
-        transform: translateY(178%);
+        width: 200px;
+        height: 200px;
+        transform: translateY(160%);
     }
 
     .asset-sum > .salary {
@@ -879,9 +880,9 @@ h4.error-message {
     }
 
     .salary-circle.asset-sum {
-        width: 182px;
-        height: 182px;
-        transform: translateY(178%);
+        width: 190px;
+        height: 190px;
+        transform: translateY(168%);
     }
 
     .asset-sum > .salary {
@@ -942,10 +943,19 @@ h4.error-message {
     }
 
     .page-title {
-        font-size: 30px;
+        font-size: 20px;
+        margin-top: 30px;
+    }
+
+    .table {
+        margin-top: 20px;
     }
 
     .sm-remove {
+        display: none;
+    }
+
+    .xsm-remove {
         display: none;
     }
     
@@ -953,9 +963,13 @@ h4.error-message {
         font-size: 12px;
     }
 
+    .header {
+        padding: 12px;
+    }
+
     .cell {
-        font-size: 8px;
-        padding: 4px;
+        font-size: 14px;
+        padding: 6px;
     }
 
     .chart-box.column-centre{
@@ -1020,9 +1034,9 @@ h4.error-message {
     }
 
     .salary-circle.asset-sum {
-        width: 140px;
-        height: 140px;
-        transform: translateY(195%);
+        width: 160px;
+        height: 160px;
+        transform: translateY(170%);
     }
 
     .input {

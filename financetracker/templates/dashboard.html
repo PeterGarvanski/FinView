@@ -7,7 +7,7 @@
             <div class="table">
                 <div class="trow header bx-shadow">
                     <div class="cell heads txt-shadow">Id</div>
-                    <div class="cell heads txt-shadow">Date</div>
+                    <div class="cell heads txt-shadow xsm-remove">Date</div>
                     <div class="cell heads txt-shadow">Transaction</div>
                     <div class="cell heads txt-shadow">Category</div>
                     <div class="cell heads rem txt-shadow">Amount</div>
@@ -18,7 +18,7 @@
                     {% for transaction in latest_transactions %}
                     <div class="trow bx-shadow">
                         <div class="cell">{{ transaction.transaction_id }}</div>
-                        <div class="cell">{{ transaction.date }}</div>
+                        <div class="cell xsm-remove">{{ transaction.date }}</div>
                         <div class="cell">
                             {% if transaction.transaction_type == "earning" %}
                             <i class="fas fa-circle-up"></i>
