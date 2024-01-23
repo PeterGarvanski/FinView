@@ -57,7 +57,7 @@ def register():
                 message = "Savings Goal can't be negative!"
                 return render_template("register.html", register_message=message)
             else:
-                new_user = User(username=username,password=password, net_worth_goal=net_worth_goal, savings_goal=savings_goal)
+                new_user = User(username=username,password=password, net_worth_goal=net_worth_goal, savings_goal=savings_goal, salary=0)
                 
                 # Commits data
                 db.session.add(new_user)
@@ -114,11 +114,8 @@ def income_expenses():
     USER_ID = session.get('USER_ID')
     user = User.query.get(USER_ID)
 
-    # Checks for users salary and formats salary
-    if user.salary:
-        salary = "{:,}".format(user.salary)
-    else:
-        salary = 0
+    # Formats user salary
+    salary = "{:,}".format(user.salary)
 
     return render_template("income-expenses.html", active_page="income_expenses", salary=salary)
 
