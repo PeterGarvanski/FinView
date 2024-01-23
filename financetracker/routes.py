@@ -123,6 +123,15 @@ def income_expenses():
     return render_template("income-expenses.html", active_page="income_expenses", salary=salary)
 
 
+@app.route("/all-transactions")
+def allTransactions():
+    # Retrieves users credentials
+    USER_ID = session.get('USER_ID')
+    all_transactions = Transaction.query.filter_by(user_id=USER_ID).all()
+
+    return render_template("all-transactions.html", all_transactions=all_transactions)
+
+
 @app.route("/add-transaction", methods=["GET", "POST"])
 def addTransaction():
     USER_ID = session.get('USER_ID')

@@ -232,6 +232,10 @@ body.base {
     background-position: 220px -130px;
 }
 
+body.transactions {
+    background-color: #474471;
+}
+
 .underline {
     border-bottom: 3px solid #edf0f2;
 }
@@ -720,7 +724,21 @@ h4.error-message {
     }
 
     .nav-link {
-        font-size: 22px;
+        font-size: 30px;
+    }
+
+    .main-nav {
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .nav-element {
+        justify-content: center;
+        gap: 5%;
+    }
+
+    .sm-remove {
+        display: none;
     }
 
     /* CSS For the dashboard page */
