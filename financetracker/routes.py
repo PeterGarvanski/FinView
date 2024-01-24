@@ -50,11 +50,11 @@ def register():
             net_worth_goal = request.form.get("net_worth_goal")
             savings_goal = request.form.get("savings_goal")
 
-            if int(net_worth_goal) < 0:
-                message = "Net Worth Goal can't be negative!"
+            if int(net_worth_goal) <= 0:
+                message = "Net Worth Goal can't be 0 or Negative!"
                 return render_template("register.html", register_message=message)
-            elif int(savings_goal) < 0:
-                message = "Savings Goal can't be negative!"
+            elif int(savings_goal) <= 0:
+                message = "Savings Goal can't be 0 or Negative!"
                 return render_template("register.html", register_message=message)
             else:
                 new_user = User(username=username,password=password, net_worth_goal=net_worth_goal, savings_goal=savings_goal, salary=0)
@@ -73,6 +73,15 @@ def register():
         return render_template("register.html", register_message=message)
 
     return render_template("register.html")
+
+
+@app.route("/log-out")
+def logOut():
+    # Delete the USER_ID session variable
+    session.pop('USER_ID', None)
+
+    # Redirect to the login route
+    return redirect(url_for("logIn"))
 
 
 @app.route("/dashboard")

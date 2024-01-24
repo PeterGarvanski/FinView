@@ -18,7 +18,7 @@
                 <div class="col-sm-12 col-lg-4 right-text">
                     <h2 class="website-name main-nav txt-shadow sm-remove">FinView</h2>
                 </div>
-                <div class="col-sm-12 col-lg-8 sm-centre">
+                <div class="col-sm-12 col-md-12 col-lg-6 sm-centre">
                     <ul class="main-nav left-text nav-element">
                         <li>
                             <a href="{{ url_for('dashboard') }}"
@@ -36,6 +36,9 @@
                                 id="assets">Assets</a>
                         </li>
                     </ul>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-2 centre">
+                    <a href="{{ url_for('logOut') }}" class="log-out bttn txt-shadow bx-shadow">Log Out</a>
                 </div>
             </div>
         </div>
