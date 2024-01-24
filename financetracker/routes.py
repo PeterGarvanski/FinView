@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, url_for, session
 from financetracker import app, db
 from financetracker.models import User, Transaction, Asset
 from sqlalchemy import desc
+from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 
 
@@ -29,7 +30,7 @@ def logIn():
                 print("Incorrect Password")
                 message = "Incorrect Password"
                 return render_template("log-in.html", log_in_message=message)
-    
+
     # If User has the Wrong Username
     except AttributeError:
         print("No Account with that username")
@@ -52,22 +53,33 @@ def register():
 
             if int(net_worth_goal) <= 0:
                 message = "Net Worth Goal can't be 0 or Negative!"
-                return render_template("register.html", register_message=message)
+                return render_template(
+                    "register.html",
+                    register_message=message)
+
             elif int(savings_goal) <= 0:
                 message = "Savings Goal can't be 0 or Negative!"
-                return render_template("register.html", register_message=message)
+                return render_template(
+                    "register.html",
+                    register_message=message)
+
             else:
-                new_user = User(username=username,password=password, net_worth_goal=net_worth_goal, savings_goal=savings_goal, salary=0)
-                
+                new_user = User(
+                    username=username,
+                    password=password,
+                    net_worth_goal=net_worth_goal,
+                    savings_goal=savings_goal,
+                    salary=0)
+
                 # Commits data
                 db.session.add(new_user)
                 db.session.commit()
 
                 # Redirects to Log-In Page
                 return redirect(url_for("logIn"))
-    
+
     # If Username already taken
-    except:
+    except IntegrityError:
         print("Username Already Taken")
         message = "Username Already Taken"
         return render_template("register.html", register_message=message)
@@ -102,8 +114,14 @@ def dashboard():
 
     # Fetches all the users transactions that fit the query
     savings = 0
-    transactions = Transaction.query.filter_by(user_id=USER_ID, transaction_type="earning", category="income").all()
-    latest_transactions = Transaction.query.filter_by(user_id=USER_ID).order_by(desc(Transaction.transaction_id)).limit(5).all()
+    transactions = Transaction.query.filter_by(
+        user_id=USER_ID,
+        transaction_type="earning",
+        category="income").all()
+
+    latest_transactions = Transaction.query.filter_by(
+        user_id=USER_ID).order_by(desc(
+            Transaction.transaction_id)).limit(5).all()
 
     # Loops through each transaction incrementing the savings value
     for transaction in transactions:
@@ -114,7 +132,15 @@ def dashboard():
     user.savings = savings
     db.session.commit()
 
-    return render_template("dashboard.html", active_page="dashboard", latest_transactions=latest_transactions, net_worth_goal=net_worth_goal, net_worth=net_worth, savings_goal=savings_goal, savings=savings, user=user)
+    return render_template(
+        "dashboard.html",
+        active_page="dashboard",
+        latest_transactions=latest_transactions,
+        net_worth_goal=net_worth_goal,
+        net_worth=net_worth,
+        savings_goal=savings_goal,
+        savings=savings,
+        user=user)
 
 
 @app.route("/income&expenses")
@@ -126,7 +152,10 @@ def income_expenses():
     # Formats user salary
     salary = "{:,}".format(user.salary)
 
-    return render_template("income-expenses.html", active_page="income_expenses", salary=salary)
+    return render_template(
+        "income-expenses.html",
+        active_page="income_expenses",
+        salary=salary)
 
 
 @app.route("/all-transactions")
@@ -135,7 +164,9 @@ def allTransactions():
     USER_ID = session.get('USER_ID')
     all_transactions = Transaction.query.filter_by(user_id=USER_ID).all()
 
-    return render_template("all-transactions.html", all_transactions=all_transactions)
+    return render_template(
+        "all-transactions.html",
+        all_transactions=all_transactions)
 
 
 @app.route("/add-transaction", methods=["GET", "POST"])
@@ -150,7 +181,12 @@ def addTransaction():
         transaction_type = request.form.get("transaction_type")
         category = request.form.get("category")
         amount = request.form.get("amount")
-        new_transaction = Transaction(user_id=USER_ID, date=date, transaction_type=transaction_type, category=category, amount=amount)
+        new_transaction = Transaction(
+            user_id=USER_ID,
+            date=date,
+            transaction_type=transaction_type,
+            category=category,
+            amount=amount)
 
         # Commits data
         db.session.add(new_transaction)
@@ -158,9 +194,12 @@ def addTransaction():
 
         # Redirects to income and expenses page
         return redirect(url_for("income_expenses"))
-    
+
     salary = "{:,}".format(user.salary)
-    return render_template("add-transaction.html", active_page="income_expenses", salary=salary)
+    return render_template(
+        "add-transaction.html",
+        active_page="income_expenses",
+        salary=salary)
 
 
 @app.route("/edit-salary", methods=["GET", "POST"])
@@ -169,7 +208,7 @@ def editSalary():
     user = User.query.get(USER_ID)
 
     if request.method == "POST":
-        # Retrieves the salary from the form and the credentials of the logged in user
+        # Retrieves the salary from and credentials of the logged in user
         salary = int(request.form.get("salary"))
 
         # Changes the users salary to the new salary
@@ -179,7 +218,10 @@ def editSalary():
         return redirect(url_for("income_expenses"))
 
     salary = "{:,}".format(user.salary)
-    return render_template("edit-salary.html", active_page="income_expenses", salary=salary)
+    return render_template(
+        "edit-salary.html",
+        active_page="income_expenses",
+        salary=salary)
 
 
 @app.route("/delete-transaction", methods=["GET", "POST"])
@@ -188,9 +230,11 @@ def deleteTransaction():
     user = User.query.get(USER_ID)
 
     if request.method == "POST":
-        # Retrieves the id from the form and the credentials of the logged in user
+        # Retrieves the id and the credentials of the logged in user
         transaction_id = request.form.get("transaction_id")
-        transaction = Transaction.query.filter_by(user_id=USER_ID, transaction_id=transaction_id).first()
+        transaction = Transaction.query.filter_by(
+            user_id=USER_ID,
+            transaction_id=transaction_id).first()
         delete = request.form.get("delete_transaction")
 
         # Commit the changes to the database if the transaction exists
@@ -200,10 +244,12 @@ def deleteTransaction():
 
         # Redirect to asset page whether or not the transaction was found
         return redirect(url_for("income_expenses"))
-    
-    salary = "{:,}".format(user.salary)
-    return render_template("delete-transaction.html", active_page="income_expenses", salary=salary)
 
+    salary = "{:,}".format(user.salary)
+    return render_template(
+        "delete-transaction.html",
+        active_page="income_expenses",
+        salary=salary)
 
 
 @app.route("/assets")
@@ -222,7 +268,12 @@ def assets():
 
     total_asset_value = "{:,}".format(total_asset_value)
 
-    return render_template("assets.html", active_page="assets", total_asset_value=total_asset_value, asset_names=asset_names, asset_values=asset_values)
+    return render_template(
+        "assets.html",
+        active_page="assets",
+        total_asset_value=total_asset_value,
+        asset_names=asset_names,
+        asset_values=asset_values)
 
 
 @app.route("/add-assets", methods=["GET", "POST"])
@@ -233,7 +284,10 @@ def addAssets():
         # Adds data to the database
         asset_name = str(request.form.get("asset-name")).capitalize()
         asset_value = request.form.get("asset-value")
-        new_asset = Asset(user_id=USER_ID, asset_name=asset_name, asset_value=asset_value)
+        new_asset = Asset(
+            user_id=USER_ID,
+            asset_name=asset_name,
+            asset_value=asset_value)
 
         # Commits data
         db.session.add(new_asset)
@@ -241,7 +295,7 @@ def addAssets():
 
         # Redirects to asset page
         return redirect(url_for("assets"))
-    
+
     assets = Asset.query.filter_by(user_id=USER_ID).all()
 
     total_asset_value = 0
@@ -255,7 +309,12 @@ def addAssets():
 
     total_asset_value = "{:,}".format(total_asset_value)
 
-    return render_template("add-asset.html", active_page="assets", total_asset_value=total_asset_value, asset_names=asset_names, asset_values=asset_values)
+    return render_template(
+        "add-asset.html",
+        active_page="assets",
+        total_asset_value=total_asset_value,
+        asset_names=asset_names,
+        asset_values=asset_values)
 
 
 @app.route("/delete-assets", methods=["GET", "POST"])
@@ -278,7 +337,7 @@ def deleteAssets():
 
         # Redirects to asset page
         return redirect(url_for("assets"))
-    
+
     assets = Asset.query.filter_by(user_id=USER_ID).all()
 
     total_asset_value = 0
@@ -292,4 +351,9 @@ def deleteAssets():
 
     total_asset_value = "{:,}".format(total_asset_value)
 
-    return render_template("delete-asset.html", active_page="assets", total_asset_value=total_asset_value, asset_names=asset_names, asset_values=asset_values)
+    return render_template(
+        "delete-asset.html",
+        active_page="assets",
+        total_asset_value=total_asset_value,
+        asset_names=asset_names,
+        asset_values=asset_values)

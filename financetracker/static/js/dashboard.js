@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // If data is larger than goal limit graph to 100%
     if (jsonData.net_worth_goal <= jsonData.net_worth) {
-        jsonData.net_worth = jsonData.net_worth_goal
+        jsonData.net_worth = jsonData.net_worth_goal;
     }
 
     if (jsonData.savings_goal <= jsonData.savings) {
-        jsonData.savings = jsonData.savings_goal
+        jsonData.savings = jsonData.savings_goal;
     }
 
     // Creates chart with database values
