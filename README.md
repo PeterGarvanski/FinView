@@ -146,34 +146,47 @@ FinView is a web-based finance tracking application developed to simplify users'
 
 ### W3C Validator:
 
-- ***HTML*** ![HTML Passing Validator Screenshot](assets/images/testing-images/w3c-validator-html.jpg)
+- ***HTML*** ![HTML Passing Validator Screenshot](financetracker/static/images/testing-images/html-validation.png)
 
 ### Jigsaw Validator:
-- ***CSS*** ![CSS Passing Validator Screenshot](assets/images/testing-images/jigsaw-validator-css.jpg)
+- ***CSS*** ![CSS Passing Validator Screenshot](financetracker/static/images/testing-images/css-validation.png)
 
-### Jest Mocking and Unit Tests:
-- ***JavaScript*** ![Javascript Passing jest tests Screenshot](assets/images/testing-images/javascript-jest-tests.jpg)
+### JSHint:
+- ***JavaScript Dashboard*** ![Javascript Passing Screenshot](financetracker/static/images/testing-images/dashboard-javascript-validation.png)
+
+### JSHint:
+- ***JavaScript Asset*** ![Javascript Passing Screenshot](financetracker/static/images/testing-images/asset-javascript-validation.png)
+
+### JSHint:
+- ***Python*** ![Python Passing Screenshot](financetracker/static/images/testing-images/python-validation.png)
 
 ### Manual Testing:
 
-| Feature                 | Action                             | Expected Result               | Tested | Passed  | Comments            |
-| ----------------------- | ---------------------------------- | ----------------------------- | ------ | ------- | ------------------- |
-| Home Navigation         | Click on the 'Home' link           | Redirect to Home page         | ✅     | ✅     | Works Fine          |
-| Game Navigation         | Click on the 'Game' link           | Redirect to Game page         | ✅     | ✅     | Works Fine          |
-| Instructions Naviation  | Click on the 'Instructions' link   | Redirect to Instructions page | ✅     | ✅     | Works Fine          |
-| Brain Animation         | Check Home page to see             | Brain Should be spinning      | ✅     | ✅     | Works Fine          |
-| Question-Mark Animation | Refresh the page to see            | Question-Mark should roll in  | ✅     | ✅     | Works Fine          |
-| Start Button            | Click on 'Start Game' button       | Should start the game         | ✅     | ✅     | Works Fine          |
-| Score Counter           | Pass a Level to see incrementation | Should Increase by one        | ✅     | ✅     | Works Fine          |
-| Lives Counter           | Click a wrong square               | Should Decrease by one        | ✅     | ✅     | Needs 1 more press  |
-| Right-Square Clicked    | Click the right square             | Should turn square purple     | ✅     | ✅     | Works Fine          |
-| Wrong-Square Clicked    | Click the wrong square             | Should turn square grey       | ✅     | ✅     | Works Fine          |
+| Feature                      | Action                                | Expected Result                    | Tested | Passed  | Comments   |
+| ---------------------------- | ------------------------------------- | ---------------------------------- | ------ | ------- | ---------- |
+| Dashboard Navigation         | Click on the 'Dashboard' link         | Redirect to Dashboard page         | ✅     | ✅     | Works Fine |
+| Income & Expenses Navigation | Click on the 'Income & Expenses' link | Redirect to Income & Expenses page | ✅     | ✅     | Works Fine |
+| Assets Navigation            | Click on the 'Assets' link            | Redirect to Assets page            | ✅     | ✅     | Works Fine |
+| Log Out button               | Click on the 'Log Out' Button         | Redirect to Log In page            | ✅     | ✅     | Works Fine |
+| View All Transactions Page   | Click on the 'View All' button        | Redirect to All Transactions page  | ✅     | ✅     | Works Fine |
+| Form Submits                 | Click on the 'Submit' buttons         | Redirect to relevant pages         | ✅     | ✅     | Works Fine |
+| Register Page Form           | Fill register form out and submit     | If fields not empty it redirects   | ✅     | ✅     | Works Fine |
+| Log In Page Form             | Fill Log In form out and submit       | If fields not empty it redirects   | ✅     | ✅     | Works Fine |
+| Savings Goal Chart           | Add transaction income & earning      | Chart updates based on transaction | ✅     | ✅     | Works Fine |
+| Net Worth Goal Chart         | Add an asset or change salary         | Chart updates based on assets      | ✅     | ✅     | Works Fine |
+| Asset Chart                  | Dispalys all assets and amounts       | Dispalys all assets and amounts    | ✅     | ✅     | Works Fine |
+| Total Asset Value number     | Add an asset or delete an asset       | Number updates based on assets     | ✅     | ✅     | Works Fine | 
+| Savings number               | Add transaction income & earning      | Number updates based on transaction| ✅     | ✅     | Works Fine |
+| Net Worth number             | Add an asset or change salary         | Number updates based on assets     | ✅     | ✅     | Works Fine |
+| Salary Circle                | Click "Edit Salary" and submit salary | Salary Circle updates to new salary| ✅     | ✅     | Works Fine |
+| Add Transaction              | Click and fill out the form           | If fields not empty it submits     | ✅     | ✅     | Works Fine |
+| Delete Transaction           | Click and fill out the form           | If fields not empty it submits     | ✅     | ✅     | Works Fine |
+| Add Asset                    | Click and fill out the form           | If fields not empty it submits     | ✅     | ✅     | Works Fine |
+| Delete Asset                 | Click and fill out the form           | If fields not empty it submits     | ✅     | ✅     | Works Fine |
 
 ### Fixed Bugs:
 
-1. **Negativve Lives Bug:** My Lives counter would go negative. After thorough testing I discovered this was due because within my ***playerTurn()*** Method, the conditional else if statement was checking the ***wrongSquares.length*** but this would change with every incrementation of a new level. To fix this, I simply used the ***Lives*** class property and compared to see if it was ***>= 0***.
-
-2. **Too Many Generated Squares Bug:** This bug happened ater the first level was surpassed. The ***generateSquares()*** method would generate too much squares. I realised this was because the ***generatedSquares*** property wasn't getting reset. To fix this, I simply added the ***setGeneratedSquares([])*** within the ***gameSequence()*** function, before the ***generateSquares()*** method.
+1. **Negative Savings and Net Worth Goal:** When registering as a user on the website, you are required to enter a "Savings Goal" and a "Net Worth Goal." I discovered that if users enter a negative number or zero, the charts won't display correctly. To address this issue, I added extra validation during registration in the form of an if-else statement: ***if int(net_worth_goal) <= 0:*** and ***elif int(savings_goal) <= 0:*** . This resolution ensures that users cannot input non-positive values for these goals, preventing potential issues with chart display.
 
 ### Supported Screen Sizes:
 
@@ -185,4 +198,4 @@ FinView is a web-based finance tracking application developed to simplify users'
 
 ## Deployment
 
-The Site was Deployed on GitHub Pages. This is the link <https://petergarvanski.github.io/Memory-Mayhem/>
+The Site was Deployed on Heroku. This is the link <https://my-finview-15e37362d8a7.herokuapp.com/>
