@@ -198,4 +198,6 @@ FinView is a web-based finance tracking application developed to simplify users'
 
 ## Deployment
 
+To deploy the site, I first created an instance of my database in ElephantSQL. Then, in my IDE, I created a requirements.txt file listing all libraries, frameworks, and add-ons I have used. Following that, I created a Procfile with the commands needed to run my web app. Finally, on Heroku, I added all my environment variables and deployed my site.
+
 The Site was Deployed on Heroku. This is the link <https://my-finview-15e37362d8a7.herokuapp.com/>
