@@ -196,6 +196,10 @@ FinView is a web-based finance tracking application developed to simplify users'
 - **For Large Laptop and Small Desktop Screen Sizes:** (992px to 1200px).
 - **For Large Desktop Screen Sizes:** (1200px +).
 
+### Database Schema:
+
+The FinanceTracker database consists of three interconnected tables: **User**, **Transaction**, and **Asset**. The **User** table serves as the central entity, containing user-specific information such as username, password, financial goals, net worth, savings, and salary. Both the **Transaction** and **Asset** tables are linked to the **User** table through the `user_id` foreign key, establishing a relational connection. In the **Transaction** table, each entry corresponds to a financial transaction made by a user, with details including the transaction date, type, category, and amount. The **Asset** table represents assets owned by users, featuring information such as the asset name and its associated value. The foreign key relationships, particularly with `user_id`, enable a cascading effect, ensuring that when a user is removed, their related transactions and assets are automatically deleted as well. This schema provides a comprehensive framework for managing user information, financial transactions, and owned assets within the FinanceTracker application.
+
 ## Deployment
 
 To deploy the site, I first created an instance of my database in ElephantSQL. Then, in my IDE, I created a requirements.txt file listing all libraries, frameworks, and add-ons I have used. Following that, I created a Procfile with the commands needed to run my web app. Finally, on Heroku, I added all my environment variables and deployed my site.
